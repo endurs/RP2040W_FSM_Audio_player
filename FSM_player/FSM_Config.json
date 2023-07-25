@@ -1,0 +1,69 @@
+{
+    "states": [
+
+      {
+        "id": 0,
+        "audioFile": "/music/state_0/",
+        "repeat": false,
+        "blinkCount": 1,
+        "transitions": [
+          {
+            "targetState": 1,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 0,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": 1,
+        "audioFile": "/music/state_1/",
+        "repeat": false,
+        "blinkCount": 2,
+        "transitions": [
+          {
+            "targetState": 2,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 1,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": 2,
+        "audioFile": "/music/state_2/",
+        "repeat": false,
+        "blinkCount": 3,
+        "transitions": [
+          {
+            "targetState": 0,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 2,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      }
+
+    ]
+  }
+  
