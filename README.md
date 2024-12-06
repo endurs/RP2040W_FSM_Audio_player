@@ -34,7 +34,7 @@ Your JSON configuration file for the RP2040 audio player must describe a series 
 
 ### Overview
 
-The JSON configuration file contains a top-level `"states"` array. Each element within `"states"` represents one state in the FSM and includes the following key properties:
+Each element within `"states"` represents one state in the FSM and includes the following key properties:
 
 - A unique numeric `id` for the state.
 - An `audioFile` specifying the path to the audio resource.
@@ -48,7 +48,7 @@ At runtime, the FSM performs the following:
 2. Starts at `state.id = 0` by default.
 3. Continuously evaluates conditions specified in the `transitions` for each state.
 
-Internally, the FSM also supports "skip" and "reset" transitions, which can be triggered externally. These are automatically added to each state and allow for skipping to the next state or resetting to the initial state.
+Internally, the FSM also handles "skip" and "reset" transitions. These are automatically added to each state and allow for skipping to the next state or resetting to the initial state. No need to add these in the .json config file.
 
 ### JSON Structure
 
@@ -104,7 +104,7 @@ Conditions define what needs to be checked in order for the FSM to change states
 1. **SENSOR**: Checks the logical state of a sensor input pin.
    - **Data Fields**:
      - **`sensorPin` (number)**: The index of the sensor pin to read.
-     - **`state` (boolean)**: The expected logical state (`true` or `false`) for the condition to be met.
+     - **`state` (boolean)**: The expected logical state (`true` or `false`) for the condition to be met. (Meaning is the switch connected to the sensor pin closen or open)
 
    **Example SENSOR Condition**:
    ```json
@@ -204,21 +204,23 @@ Below is an example configuration:
   - The LED blinks twice per cycle (`blinkCount: 2`).
   - Transition to `state 2` occurs if `sensorPin 2` reads `false`.
 
-### Guidelines for Creating JSON Configurations
+### Key notes:
 
-1. **Ensure Valid JSON Structure**: The JSON must have a top-level `"states"` array. Each state must have valid fields (`id`, `audioFile`, `repeat`, `blinkCount`, `transitions`).
+1. **Example JSON structure**: An example json structure is located in the root folder of the repository, you may use this and edit to fit your needs.
 
-2. **Unique State IDs**: Start with `id` = 0 and increment sequentially. Ensure every state has a unique ID.
+2. **Ensure Valid JSON Structure**: The JSON must have a top-level `"states"` array. Each state must have valid fields (`id`, `audioFile`, `repeat`, `blinkCount`, `transitions`).
 
-3. **Correct Condition Data**: The conditions must specify the correct `data` fields for each `type`. Missing or incorrect fields (e.g., missing `sensorPin` in a `SENSOR` condition) will lead to errors or undefined behavior.
+3. **Unique and sequentiual State IDs**: Start with `id` = 0 and increment sequentially. Ensure every state has a unique ID.
 
-4. **Consistent State References**: Verify that all `targetState` references are valid (e.g., if a transition points to `state 3`, ensure a state with `id: 3` exists).
+4. **Blink count**: The blink count is there to help debug/identify which state the controller is in, since states are zero indexed, to get positive feedback from the leds also at state id 0 its reccomended to let blink count be equal to `id + 1` (So counting from 1 and up in the json.)
 
-5. **Audio Resource Availability**: Make sure the paths provided in `audioFile` exist on the SD card and are readable by the firmware.
+5. **JSON file verification**: When editing json files it can be helpful to use an online JSON file editor to validate you get the correct order and number of `[]` and `{}`.
 
-6. **Testing and Debugging**: Use the serial console to diagnose loading issues. Parsing errors or missing fields will be indicated in the error messages.
+6. **Availible sensor pins**: There are eight sensor pins availible, they are 0-7. They are all labled accordingly on the PCB itself.
 
-### Further Assistance
+7. **Correct Condition Data**: The conditions field in the .json must specify the correct `data` fields given its `type`. Missing or incorrect fields (e.g., missing `sensorPin` in a `SENSOR` condition) will lead to errors or undefined behavior.
 
-If you need more detailed guidance—such as the exact timing, LED blinking patterns, or details on integrating the `AUDIO_FINISHED` condition—please feel free to ask for more information.
+8. **Consistent State References**: Verify that all `targetState` references exist (e.g., if a transition points to `state 3`, ensure a state with `id: 3` exists).
+
+9. **Audio Resource Availability**: Make sure the paths provided in `audioFile` exist on the SD card and are readable by the firmware.
 
