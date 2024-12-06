@@ -20,11 +20,11 @@ So far i have found the best audio quality which the controller handles 100% rel
 ### Mixed down to mono
 Stereo tracks work, however take more bandwidth and can start making wierd popping noises if the controller cant keep up
 
-![Mix down to mono](images\audacity-mix-down-to-mono.png)
+![Mix down to mono](images/audacity-mix-down-to-mono.png)
 
 ### Export as 16 bit PCM (.WAV)
 This is lossless audio meaning it has excellect quality, and it is less heavy on the rp2040 as it quite fast to parse since its not compressed. 16 Bit is the highest before the bandwidth again starts becoming a problem in my testing.
-![Export](images\audacity-mix-down-to-mono.png)
+![Export](images&audacity-mix-down-to-mono.png)
 
 
 
