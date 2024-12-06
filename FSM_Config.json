@@ -1,0 +1,132 @@
+{
+    "states": [
+
+      {
+        "id": 0,
+        "audioFile": "/music/state_0/",
+        "repeat": false,
+        "blinkCount": 1,
+        "transitions": [
+          {
+            "targetState": 1,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 1,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": 1,
+        "audioFile": "/music/state_1/",
+        "repeat": false,
+        "blinkCount": 2,
+        "transitions": [
+          {
+            "targetState": 2,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 2,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": 2,
+        "audioFile": "/music/state_2/",
+        "repeat": false,
+        "blinkCount": 3,
+        "transitions": [
+          {
+            "targetState": 3,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 3,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": 3,
+        "audioFile": "/music/state_3/",
+        "repeat": false,
+        "blinkCount": 4,
+        "transitions": [
+          {
+            "targetState": 4,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 4,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": 4,
+        "audioFile": "/music/state_4/",
+        "repeat": false,
+        "blinkCount": 5,
+        "transitions": [
+          {
+            "targetState": 5,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 5,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": 5,
+        "audioFile": "/music/state_5/",
+        "repeat": false,
+        "blinkCount": 6,
+        "transitions": [
+          {
+            "targetState": 0,
+            "conditions": [
+              {
+                "type": "SENSOR",
+                "data": {
+                  "sensorPin": 6,
+                  "state": false
+                }
+              }
+            ]
+          }
+        ]
+      }
+
+    ]
+  }
+  
