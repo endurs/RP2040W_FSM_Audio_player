@@ -24,7 +24,7 @@ Stereo tracks work, however take more bandwidth and can start making wierd poppi
 
 ### Export as 16 bit PCM (.WAV)
 This is lossless audio meaning it has excellect quality, and it is less heavy on the rp2040 as it quite fast to parse since its not compressed. 16 Bit is the highest before the bandwidth again starts becoming a problem in my testing.
-![Export](images/audacity-mix-down-to-mono.png)
+![Export](audacity-save-as-16bit-wav.png)
 
 
 
